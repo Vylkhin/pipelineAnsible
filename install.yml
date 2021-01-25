@@ -1,0 +1,19 @@
+---
+- hosts: web
+  become: yes
+  tasks:
+
+ - name: "Install ngnix"
+   apt:
+     name: nginx
+     state: latest
+ - name: "Install git"
+   apt:
+     name: git
+     state: present
+
+ - name: "Clone git"
+   git:
+    repo: https://github.com/Vylkhin/pipelineAnsible.git
+    version: master
+    dest: /var/www/html/
